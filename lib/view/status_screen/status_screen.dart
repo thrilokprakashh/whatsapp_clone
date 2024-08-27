@@ -62,13 +62,18 @@ class _StatusScreenState extends State<StatusScreen> {
                         Container(
                           width: 60,
                           decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.red, width: 2)),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.black54, width: 1),
+                          ),
                         ),
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://images.pexels.com/photos/27245748/pexels-photo-27245748/free-photo-of-fog-over-the-dolomites.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"),
-                          radius: 10,
+                        Positioned(
+                          left: 5,
+                          top: 3,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                "https://images.pexels.com/photos/27245748/pexels-photo-27245748/free-photo-of-fog-over-the-dolomites.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"),
+                            radius: 25,
+                          ),
                         ),
                       ],
                     ),
@@ -99,9 +104,25 @@ class _StatusScreenState extends State<StatusScreen> {
               ListView.builder(
                 shrinkWrap: true,
                 itemBuilder: (context, index) => ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(stDataList[index]["status"]),
-                    radius: 30,
+                  leading: Stack(
+                    children: [
+                      Container(
+                        width: 60,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.blue, width: 1),
+                        ),
+                      ),
+                      Positioned(
+                        left: 5,
+                        top: 3,
+                        child: CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(stDataList[index]["status"]),
+                          radius: 25,
+                        ),
+                      ),
+                    ],
                   ),
                   title: Text(
                     stDataList[index]["name"],
@@ -122,10 +143,25 @@ class _StatusScreenState extends State<StatusScreen> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) => ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage:
-                          NetworkImage(viewDataList[index]["status"]),
-                      radius: 30,
+                    leading: Stack(
+                      children: [
+                        Container(
+                          width: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.black54, width: 1),
+                          ),
+                        ),
+                        Positioned(
+                          left: 5,
+                          top: 3,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                NetworkImage(viewDataList[index]["status"]),
+                            radius: 25,
+                          ),
+                        ),
+                      ],
                     ),
                     title: Text(
                       viewDataList[index]["name"],

@@ -12,21 +12,34 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int flotIndex = 0;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          backgroundColor: Color.fromARGB(255, 44, 126, 45),
-          onPressed: () {},
-          child: Icon(
-            Icons.message,
-            color: Colors.white,
-          ),
+        floatingActionButton: Visibility(
+          visible: flotIndex != 0,
+          child: FloatingActionButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              backgroundColor: Color.fromARGB(255, 44, 126, 45),
+              onPressed: () {},
+              child: flotIndex == 1
+                  ? Icon(
+                      Icons.message,
+                      color: Colors.white,
+                    )
+                  : flotIndex == 2
+                      ? Icon(
+                          Icons.create,
+                          color: Colors.white,
+                        )
+                      : Icon(
+                          Icons.add_call,
+                          color: Colors.white,
+                        )),
         ),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 44, 126, 45),
@@ -49,11 +62,16 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
           bottom: TabBar(
+            onTap: (index) {
+              setState(() {
+                flotIndex = index;
+              });
+            },
             labelColor: Colors.white,
             indicatorColor: Colors.white,
             unselectedLabelColor: Colors.white,
             indicatorSize: TabBarIndicatorSize.tab,
-            indicatorWeight: 5,
+            indicatorWeight: 3,
             dividerHeight: 0,
             labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
             tabs: [
@@ -73,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
             CameraScreen(),
             ChatsScreen(),
