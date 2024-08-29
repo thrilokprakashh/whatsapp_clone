@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whats_app_task/view/calls_screen/calls_screen.dart';
 import 'package:whats_app_task/view/camera_screen/camera_screen.dart';
 import 'package:whats_app_task/view/chats_screen/chats_screen.dart';
+import 'package:whats_app_task/view/settings/settings_page.dart';
 import 'package:whats_app_task/view/status_screen/status_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,12 +54,44 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.white,
             ),
             SizedBox(
-              width: 20,
+              width: 15,
             ),
-            Icon(
-              Icons.more_vert,
-              size: 30,
-              color: Colors.white,
+            PopupMenuButton(
+              iconColor: Colors.white,
+              icon: Icon(
+                Icons.more_vert,
+                color: Colors.white,
+                size: 30,
+              ),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: Text("New group"),
+                  onTap: () {},
+                ),
+                PopupMenuItem(
+                  child: Text("New broadcast"),
+                  onTap: () {},
+                ),
+                PopupMenuItem(
+                  child: Text("WhatsApp Web"),
+                  onTap: () {},
+                ),
+                PopupMenuItem(
+                  child: Text("Starred messages"),
+                  onTap: () {},
+                ),
+                PopupMenuItem(
+                  child: Text("Settings"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SettingsPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ],
           bottom: TabBar(
