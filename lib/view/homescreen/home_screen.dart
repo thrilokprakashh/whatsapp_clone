@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whats_app_task/view/calls_screen/calls_screen.dart';
 import 'package:whats_app_task/view/camera_screen/camera_screen.dart';
 import 'package:whats_app_task/view/chats_screen/chats_screen.dart';
+import 'package:whats_app_task/view/contact_screen/contact_page.dart';
 import 'package:whats_app_task/view/settings/settings_page.dart';
 import 'package:whats_app_task/view/status_screen/status_screen.dart';
 
@@ -26,7 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(50),
               ),
               backgroundColor: Color.fromARGB(255, 44, 126, 45),
-              onPressed: () {},
+              onPressed: () {
+                if (flotIndex == 1)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ContactPage(),
+                    ),
+                  );
+              },
               child: flotIndex == 1
                   ? Icon(
                       Icons.message,

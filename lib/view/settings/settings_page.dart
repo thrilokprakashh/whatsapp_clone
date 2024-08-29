@@ -64,30 +64,40 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: Column(
         children: [
-          ListView(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            padding: EdgeInsets.only(top: 15),
-            children: [
-              ListTile(
-                leading: CircleAvatar(
-                  radius: 30,
+          Padding(
+            padding: const EdgeInsets.only(top: 20, left: 10, bottom: 10),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 45,
                   backgroundImage: NetworkImage(
                       "https://images.pexels.com/photos/27911398/pexels-photo-27911398/free-photo-of-a-cowboy-riding-a-horse-in-the-desert-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"),
                 ),
-                title: Text(
-                  "Programmer",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                SizedBox(
+                  width: 20,
                 ),
-                subtitle: Text("Hey there, I am using whatsapp."),
-              ),
-            ],
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Programmer",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Text(
+                      "Hey there, I am using whatsapp.",
+                      style: TextStyle(color: Colors.black54),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
           SizedBox(
             height: 10,
           ),
           ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(horizontal: 30),
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (context, index) => ListTile(
@@ -113,7 +123,7 @@ class _SettingsPageState extends State<SettingsPage> {
             itemCount: 5,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
             child: Row(
               children: [
                 Icon(
@@ -132,7 +142,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           SizedBox(
-            height: 60,
+            height: 80,
           ),
           Text("from"),
           Text(
