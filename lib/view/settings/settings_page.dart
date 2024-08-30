@@ -59,7 +59,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           SizedBox(
             width: 30,
-          )
+          ),
         ],
       ),
       body: Column(
@@ -87,9 +87,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     Text(
                       "Hey there, I am using whatsapp.",
                       style: TextStyle(color: Colors.black54),
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -137,7 +137,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Text(
                   "Invite a Friend",
                   style: TextStyle(fontSize: 20),
-                )
+                ),
               ],
             ),
           ),
@@ -148,7 +148,7 @@ class _SettingsPageState extends State<SettingsPage> {
           Text(
             "Facebook",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          )
+          ),
         ],
       ),
     );

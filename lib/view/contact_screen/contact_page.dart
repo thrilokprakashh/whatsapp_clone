@@ -142,7 +142,10 @@ class _ContactPageState extends State<ContactPage> {
             ),
             Text(
               " 110 contacts",
-              style: TextStyle(color: Colors.white, fontSize: 10),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),
