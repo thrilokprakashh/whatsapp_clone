@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whats_app_task/view/dm_screen/dm_page.dart';
 
 class ChatsScreen extends StatefulWidget {
   const ChatsScreen({super.key});
@@ -114,7 +115,14 @@ class _ChatsScreenState extends State<ChatsScreen> {
           children: List.generate(
             12,
             (index) => ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DmPage(),
+                  ),
+                );
+              },
               leading: CircleAvatar(
                 radius: 30,
                 backgroundImage: NetworkImage(wpDataList[index]["dp"]),

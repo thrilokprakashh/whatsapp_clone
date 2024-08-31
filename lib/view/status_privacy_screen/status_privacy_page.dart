@@ -121,7 +121,7 @@ class _StatusPrivacyPageState extends State<StatusPrivacyPage> {
           ),
           SizedBox(
             height: 40,
-          )
+          ),
         ],
       ),
     );
