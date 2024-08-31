@@ -6,7 +6,9 @@ import 'package:whats_app_task/view/chats_screen/chats_screen.dart';
 import 'package:whats_app_task/view/contact_screen/contact_page.dart';
 import 'package:whats_app_task/view/group_screen/group_page.dart';
 import 'package:whats_app_task/view/settings/settings_page.dart';
+import 'package:whats_app_task/view/status_privacy_screen/status_privacy_page.dart';
 import 'package:whats_app_task/view/status_screen/status_screen.dart';
+import 'package:whats_app_task/view/whatsapp_web/whats_app_webpage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,6 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (context) => ContactPage(),
                     ),
                   );
+                else if (flotIndex == 2) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CameraScreen(),
+                    ),
+                  );
+                }
               },
               child: flotIndex == 1
                   ? Icon(
@@ -45,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                   : flotIndex == 2
                       ? Icon(
-                          Icons.create,
+                          Icons.camera_alt,
                           color: Colors.white,
                         )
                       : Icon(
@@ -74,49 +84,139 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 size: 30,
               ),
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Text("New group"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => GroupPage(),
-                      ),
-                    );
-                  },
-                ),
-                PopupMenuItem(
-                  child: Text("New broadcast"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BroadcastPage(),
-                      ),
-                    );
-                  },
-                ),
-                PopupMenuItem(
-                  child: Text("WhatsApp Web"),
-                  onTap: () {},
-                ),
-                PopupMenuItem(
-                  child: Text("Starred messages"),
-                  onTap: () {},
-                ),
-                PopupMenuItem(
-                  child: Text("Settings"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SettingsPage(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+              itemBuilder: (context) {
+                if (flotIndex == 1) {
+                  return [
+                    PopupMenuItem(
+                      child: Text("New group"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GroupPage(),
+                          ),
+                        );
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: Text("New broadcast"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BroadcastPage(),
+                          ),
+                        );
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: Text("WhatsApp Web"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WhatsAppWebpage(),
+                          ),
+                        );
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: Text("Starred messages"),
+                      onTap: () {},
+                    ),
+                    PopupMenuItem(
+                      child: Text("Settings"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SettingsPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ];
+                } else if (flotIndex == 2) {
+                  return [
+                    PopupMenuItem(
+                      child: Text("Status privacy"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => StatusPrivacyPage(),
+                          ),
+                        );
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: Text("Settings"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SettingsPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ];
+                } else {
+                  return [
+                    PopupMenuItem(
+                      child: Text("Clear call log"),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            shape: RoundedRectangleBorder(),
+                            title: Text(
+                              """Do you want to clear your entire call 
+log?""",
+                              style: TextStyle(
+                                fontSize: 17,
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "CANCEL",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 44, 126, 45),
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  "OK",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 44, 126, 45),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: Text("Settings"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SettingsPage(),
+                          ),
+                        );
+                      },
+                    )
+                  ];
+                }
+              },
             ),
           ],
           bottom: TabBar(

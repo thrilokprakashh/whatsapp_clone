@@ -84,7 +84,7 @@ class _StatusScreenState extends State<StatusScreen> {
                     ),
                     subtitle: Text("Today, 12:30 am"),
                     trailing: Icon(
-                      Icons.more_vert,
+                      Icons.more_horiz,
                       color: Colors.black,
                       size: 25,
                     ),

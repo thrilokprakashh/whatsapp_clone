@@ -114,6 +114,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
           children: List.generate(
             12,
             (index) => ListTile(
+              onTap: () {},
               leading: CircleAvatar(
                 radius: 30,
                 backgroundImage: NetworkImage(wpDataList[index]["dp"]),

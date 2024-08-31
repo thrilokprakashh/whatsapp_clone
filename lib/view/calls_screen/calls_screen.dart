@@ -29,7 +29,7 @@ class _CallsScreenState extends State<CallsScreen> {
     },
     {
       "name": "Olivia Brown",
-      "time": "20 minutes ago",
+      "time": "(3) 20 minutes ago",
       "dp":
           "https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
     },
@@ -47,7 +47,7 @@ class _CallsScreenState extends State<CallsScreen> {
     },
     {
       "name": "James Martinez",
-      "time": "1 hour ago",
+      "time": "(6) 1 hour ago",
       "dp":
           "https://images.pexels.com/photos/247932/pexels-photo-247932.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
     },
@@ -65,7 +65,7 @@ class _CallsScreenState extends State<CallsScreen> {
     },
     {
       "name": "Isabella White",
-      "time": "4 hours ago",
+      "time": "(2) 4 hours ago",
       "dp":
           "https://images.pexels.com/photos/27815886/pexels-photo-27815886/free-photo-of-a-woman-sitting-on-top-of-a-bookcase.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
     },
@@ -101,7 +101,7 @@ class _CallsScreenState extends State<CallsScreen> {
     },
     {
       "name": "Amelia Scott",
-      "time": "2 days ago",
+      "time": "(5) 2 days ago",
       "dp":
           "https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
     }
@@ -111,14 +111,32 @@ class _CallsScreenState extends State<CallsScreen> {
     return Scaffold(
       body: ListView.builder(
         padding: EdgeInsets.all(5),
-        itemCount: 15,
+        itemCount: 16,
         itemBuilder: (context, index) => ListTile(
           leading: CircleAvatar(
             backgroundImage: NetworkImage(callDataList[index]["dp"]),
             radius: 30,
           ),
           title: Text(callDataList[index]["name"]),
-          subtitle: Text(callDataList[index]["time"]),
+          subtitle: Row(
+            children: [
+              callDataList[index]["time"] == ("2 hours ago")
+                  ? Icon(
+                      Icons.call_received,
+                      color: Colors.red,
+                      size: 15,
+                    )
+                  : Icon(
+                      Icons.call_made,
+                      color: Color.fromARGB(255, 44, 126, 45),
+                      size: 15,
+                    ),
+              SizedBox(
+                width: 3,
+              ),
+              Text(callDataList[index]["time"]),
+            ],
+          ),
           trailing: callDataList[index]["time"] == ("2 hours ago")
               ? Icon(
                   Icons.videocam_rounded,
