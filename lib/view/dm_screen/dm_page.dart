@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whats_app_task/view/camera_screen/camera_screen.dart';
 
 class DmPage extends StatefulWidget {
   const DmPage({super.key});
@@ -88,7 +89,7 @@ class _DmPageState extends State<DmPage> {
         title: Row(
           children: [
             CircleAvatar(
-              radius: 23,
+              radius: 22,
               backgroundImage: NetworkImage(dmDataList[0]["dp"]),
             ),
             SizedBox(
@@ -146,6 +147,156 @@ class _DmPageState extends State<DmPage> {
                 onTap: () {},
               ),
             ],
+          ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                      AssetImage("assets/8c98994518b575bfd8c949e91d20548b.jpg"),
+                  fit: BoxFit.cover),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 12),
+            child: Column(
+              children: [
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(6)),
+                    child: Text(
+                      "TODAY",
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 13),
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 255, 243, 199),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.lock,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Messages and calls are end-to-end",
+                              style: TextStyle(fontSize: 14),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          "encrypted. No one outside of this chat, not",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        Text(
+                          "even WhatsApp, can read or listen to them.",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Spacer(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 13, vertical: 8),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30)),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "Type a message",
+                              hintStyle: TextStyle(
+                                  color: Colors.black87, fontSize: 20),
+                              border: InputBorder.none,
+                              prefixIcon: Icon(
+                                Icons.emoji_emotions,
+                                size: 25,
+                                color: Colors.black54,
+                              ),
+                              suffixIcon: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      showModalBottomSheet(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                        ),
+                                        context: context,
+                                        builder: (context) => Container(
+                                          width: double.infinity,
+                                        ),
+                                      );
+                                    },
+                                    icon: Icon(
+                                      Icons.attachment_rounded,
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => CameraScreen(),
+                                        ),
+                                      );
+                                    },
+                                    icon: Icon(Icons.camera_alt_rounded,
+                                        color: Colors.black54),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Color.fromARGB(255, 44, 126, 45),
+                        radius: 30,
+                        child: Icon(
+                          Icons.keyboard_voice_sharp,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
           ),
         ],
       ),
