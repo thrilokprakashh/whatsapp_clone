@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whats_app_task/main.dart';
+import 'package:whats_app_task/view/account_screen/account_page.dart';
 import 'package:whats_app_task/view/camera_screen/camera_screen.dart';
 
 class DmPage extends StatefulWidget {
@@ -72,6 +73,7 @@ class _DmPageState extends State<DmPage> {
           "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load",
     },
   ];
+  bool check = false;
   String? mute;
   @override
   Widget build(BuildContext context) {
@@ -90,16 +92,36 @@ class _DmPageState extends State<DmPage> {
         ),
         title: Row(
           children: [
-            CircleAvatar(
-              radius: 22,
-              backgroundImage: NetworkImage(dmDataList[dmIndex]["dp"]),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AccountPage(),
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                radius: 22,
+                backgroundImage: NetworkImage(dmDataList[dmIndex]["dp"]),
+              ),
             ),
             SizedBox(
               width: 10,
             ),
-            Text(
-              dmDataList[dmIndex]["name"],
-              style: TextStyle(color: Colors.white, fontSize: 21),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AccountPage(),
+                  ),
+                );
+              },
+              child: Text(
+                dmDataList[dmIndex]["name"],
+                style: TextStyle(color: Colors.white, fontSize: 21),
+              ),
             ),
           ],
         ),
@@ -139,16 +161,23 @@ class _DmPageState extends State<DmPage> {
               PopupMenuItem(
                 child: Text("Mute notifications"),
                 onTap: () {
+                  setState(() {});
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
+                      titlePadding: EdgeInsets.all(0),
                       shape: RoundedRectangleBorder(),
                       title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Mute notifications for...",
-                            style: TextStyle(
-                              fontSize: 17,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 20),
+                            child: Text(
+                              "Mute notifications for...",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
                             ),
                           ),
                           RadioListTile(
@@ -160,8 +189,9 @@ class _DmPageState extends State<DmPage> {
                             value: "8 hours",
                             groupValue: mute,
                             onChanged: (value) {
-                              mute = value as String?;
-                              setState(() {});
+                              setState(() {
+                                mute = value;
+                              });
                             },
                           ),
                           RadioListTile(
@@ -173,8 +203,9 @@ class _DmPageState extends State<DmPage> {
                             value: "1 week",
                             groupValue: mute,
                             onChanged: (value) {
-                              mute = value as String?;
-                              setState(() {});
+                              setState(() {
+                                mute = value;
+                              });
                             },
                           ),
                           RadioListTile(
@@ -186,10 +217,32 @@ class _DmPageState extends State<DmPage> {
                             value: "always",
                             groupValue: mute,
                             onChanged: (value) {
-                              mute = value as String?;
-                              setState(() {});
+                              setState(() {
+                                mute = value;
+                              });
                             },
                           ),
+                          Divider(
+                            color: Colors.grey,
+                            thickness: 0.5,
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                activeColor: Color.fromARGB(255, 44, 126, 45),
+                                value: check,
+                                onChanged: (value) {
+                                  setState(() {
+                                    check = value!;
+                                  });
+                                },
+                              ),
+                              Text(
+                                "show notification",
+                                style: TextStyle(fontSize: 15),
+                              )
+                            ],
+                          )
                         ],
                       ),
                       actions: [
@@ -205,7 +258,9 @@ class _DmPageState extends State<DmPage> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           child: Text(
                             "OK",
                             style: TextStyle(
@@ -305,8 +360,9 @@ class _DmPageState extends State<DmPage> {
                           padding:
                               EdgeInsets.symmetric(horizontal: 13, vertical: 8),
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30)),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: "Type a message",
