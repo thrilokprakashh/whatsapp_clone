@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whats_app_task/main.dart';
 import 'package:whats_app_task/view/dm_screen/dm_page.dart';
 
 class ChatsScreen extends StatefulWidget {
@@ -116,6 +117,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
             12,
             (index) => ListTile(
               onTap: () {
+                dmIndex = index;
                 Navigator.push(
                   context,
                   MaterialPageRoute(

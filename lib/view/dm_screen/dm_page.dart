@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whats_app_task/main.dart';
 import 'package:whats_app_task/view/camera_screen/camera_screen.dart';
 
 class DmPage extends StatefulWidget {
@@ -71,6 +72,7 @@ class _DmPageState extends State<DmPage> {
           "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load",
     },
   ];
+  String? mute;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,13 +92,13 @@ class _DmPageState extends State<DmPage> {
           children: [
             CircleAvatar(
               radius: 22,
-              backgroundImage: NetworkImage(dmDataList[0]["dp"]),
+              backgroundImage: NetworkImage(dmDataList[dmIndex]["dp"]),
             ),
             SizedBox(
               width: 10,
             ),
             Text(
-              dmDataList[0]["name"],
+              dmDataList[dmIndex]["name"],
               style: TextStyle(color: Colors.white, fontSize: 21),
             ),
           ],
@@ -136,7 +138,85 @@ class _DmPageState extends State<DmPage> {
               ),
               PopupMenuItem(
                 child: Text("Mute notifications"),
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      shape: RoundedRectangleBorder(),
+                      title: Column(
+                        children: [
+                          Text(
+                            "Mute notifications for...",
+                            style: TextStyle(
+                              fontSize: 17,
+                            ),
+                          ),
+                          RadioListTile(
+                            activeColor: Color.fromARGB(255, 44, 126, 45),
+                            title: Text(
+                              "8 hours",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            value: "8 hours",
+                            groupValue: mute,
+                            onChanged: (value) {
+                              mute = value as String?;
+                              setState(() {});
+                            },
+                          ),
+                          RadioListTile(
+                            activeColor: Color.fromARGB(255, 44, 126, 45),
+                            title: Text(
+                              "1 week",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            value: "1 week",
+                            groupValue: mute,
+                            onChanged: (value) {
+                              mute = value as String?;
+                              setState(() {});
+                            },
+                          ),
+                          RadioListTile(
+                            activeColor: Color.fromARGB(255, 44, 126, 45),
+                            title: Text(
+                              "Always",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            value: "always",
+                            groupValue: mute,
+                            onChanged: (value) {
+                              mute = value as String?;
+                              setState(() {});
+                            },
+                          ),
+                        ],
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            "CANCEL",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 44, 126, 45),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "OK",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 44, 126, 45),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
               PopupMenuItem(
                 child: Text("Wallpaper"),

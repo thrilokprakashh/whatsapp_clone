@@ -5,6 +5,8 @@ void main() {
   runApp(MyApp());
 }
 
+int dmIndex = 0;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

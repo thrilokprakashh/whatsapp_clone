@@ -94,7 +94,7 @@ class _StatusPrivacyPageState extends State<StatusPrivacyPage> {
             },
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
             child: Text(
               """Changes to your privacy settings wont’t affect status  updates that you’ve sent already""",
               style: TextStyle(fontSize: 15, color: Colors.black54),
