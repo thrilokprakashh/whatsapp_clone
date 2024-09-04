@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whats_app_task/main.dart';
 import 'package:whats_app_task/view/account_screen/account_page.dart';
 import 'package:whats_app_task/view/camera_screen/camera_screen.dart';
+import 'package:whats_app_task/view/medias_screen/media_page.dart';
 
 class DmPage extends StatefulWidget {
   const DmPage({super.key});
@@ -152,11 +153,24 @@ class _DmPageState extends State<DmPage> {
             itemBuilder: (context) => [
               PopupMenuItem(
                 child: Text("View contact"),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AccountPage(),
+                      ));
+                },
               ),
               PopupMenuItem(
                 child: Text("Media, links, and docs"),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MediaPage(),
+                    ),
+                  );
+                },
               ),
               PopupMenuItem(
                 child: Text("Mute notifications"),
