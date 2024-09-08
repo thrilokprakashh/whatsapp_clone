@@ -79,10 +79,15 @@ class _DmPageState extends State<DmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.send),
-      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Color.fromARGB(255, 44, 126, 45),
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(50),
+      //   ),
+      //   onPressed: () {},
+      //   child: Icon(Icons.send),
+      // ),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 44, 126, 45),
         leading: IconButton(
@@ -159,10 +164,11 @@ class _DmPageState extends State<DmPage> {
                 child: Text("View contact"),
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AccountPage(),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AccountPage(),
+                    ),
+                  );
                 },
               ),
               PopupMenuItem(
