@@ -12,6 +12,7 @@ class DmPage extends StatefulWidget {
 }
 
 class _DmPageState extends State<DmPage> {
+  bool type = false;
   List dmDataList = [
     {
       "name": "John",
@@ -79,15 +80,6 @@ class _DmPageState extends State<DmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Color.fromARGB(255, 44, 126, 45),
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.circular(50),
-      //   ),
-      //   onPressed: () {},
-      //   child: Icon(Icons.send),
-      // ),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 44, 126, 45),
         leading: IconButton(
@@ -388,6 +380,29 @@ class _DmPageState extends State<DmPage> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: TextField(
+                            onTap: () {
+                              setState(
+                                () {
+                                  type = true;
+                                },
+                              );
+                            },
+                            onSubmitted: (value) {
+                              setState(
+                                () {
+                                  type = false;
+                                },
+                              );
+                            },
+                            onChanged: (value) {
+                              setState(() {
+                                if (value.isEmpty) {
+                                  type = true;
+                                } else {
+                                  type = false;
+                                }
+                              });
+                            },
                             decoration: InputDecoration(
                               hintText: "Type a message",
                               hintStyle: TextStyle(
@@ -444,11 +459,19 @@ class _DmPageState extends State<DmPage> {
                       CircleAvatar(
                         backgroundColor: Color.fromARGB(255, 44, 126, 45),
                         radius: 30,
-                        child: Icon(
-                          Icons.keyboard_voice_sharp,
-                          color: Colors.white,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: type
+                              ? Icon(
+                                  Icons.send,
+                                  color: Colors.white,
+                                )
+                              : Icon(
+                                  Icons.keyboard_voice_sharp,
+                                  color: Colors.white,
+                                ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
