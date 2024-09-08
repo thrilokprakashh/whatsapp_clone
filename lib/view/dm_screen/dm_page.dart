@@ -383,7 +383,7 @@ class _DmPageState extends State<DmPage> {
                             onTap: () {
                               setState(
                                 () {
-                                  type = true;
+                                  type = false;
                                 },
                               );
                             },
@@ -395,13 +395,15 @@ class _DmPageState extends State<DmPage> {
                               );
                             },
                             onChanged: (value) {
-                              setState(() {
-                                if (value.isEmpty) {
-                                  type = true;
-                                } else {
-                                  type = false;
-                                }
-                              });
+                              setState(
+                                () {
+                                  if (value.isEmpty) {
+                                    type = false;
+                                  } else {
+                                    type = true;
+                                  }
+                                },
+                              );
                             },
                             decoration: InputDecoration(
                               hintText: "Type a message",
