@@ -423,7 +423,8 @@ class _DmPageState extends State<DmPage> {
                                       showModalBottomSheet(
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
+                                            Radius.circular(10),
+                                          ),
                                         ),
                                         context: context,
                                         builder: (context) => Container(
